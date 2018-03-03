@@ -63,7 +63,7 @@ module PrivatePub
 
     # Determine if the signature has expired given a timestamp.
     def signature_expired?(timestamp)
-      timestamp < ((Time.now.to_f - config[:signature_expiration])*1000).round if config[:signature_expiration]
+      timestamp < ((Time.now.to_i/100000 - config[:signature_expiration])).round if config[:signature_expiration]
     end
 
     # Returns the Faye Rack application.
